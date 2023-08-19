@@ -2,6 +2,28 @@
   "name": "nextjs",
   "version": "0.1.0",
   "private": true,
+  "watch": {
+    "export": {
+      "patterns": [
+        ".",
+        "styles/**",
+        "pages/**",
+        "public/**"
+      ],
+      "ignore": [
+        "out",
+        "node_modules",
+        ".next"
+      ],
+      "extensions": [
+        "js",
+        "json",
+        "lock",
+        "tsx",
+        "ts"
+      ]
+    }
+  },
   "scripts": {
     "dev": "next dev",
     "dev:extension": "npm-watch",
