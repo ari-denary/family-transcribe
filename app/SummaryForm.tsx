@@ -15,9 +15,9 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 interface FormInterface {
-  text: String;
-  translate: Boolean;
-  language: String;
+  text: string;
+  translate: boolean;
+  language: string;
 }
 
 export default function SummaryForm(){
@@ -48,7 +48,7 @@ export default function SummaryForm(){
           <DropdownMenuContent>
           <DropdownMenuLabel>Language</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuRadioGroup  value={form.language} onValueChange={updateLanguage}>
+          <DropdownMenuRadioGroup value={form.language} onValueChange={updateLanguage}>
             <DropdownMenuRadioItem value="arabic">Arabic</DropdownMenuRadioItem>
             <DropdownMenuRadioItem value="chinese-simplified">Chinese-Simplified</DropdownMenuRadioItem>
             <DropdownMenuRadioItem value="chinese-traditional">Chinese-Traditional</DropdownMenuRadioItem>
