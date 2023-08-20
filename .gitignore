@@ -35,5 +35,5 @@ yarn-error.log*
 next-env.d.ts
 
 #Google Translate API
-app/familytranscribe_google.json
+lib/familytranscribe_google.json
 .env
