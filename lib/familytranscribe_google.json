@@ -1,0 +1,14 @@
+{
+    "type": "service_account",
+    "project_id": "familytranscribe",
+    "private_key_id": "32f4775fee0bf4cb6b0bc9a978a3cb200f58d63b",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQD1bGbuX2IuWtEY\n5D7FXNiY+35lhu7cEiUYZ2vzRqe9RNbiB16VH1ToVDDQICgxYitgcbEXijBZh97y\noxf+TCDni5/2/DzXlgLesDifcVs7L13/MIf6+aGtQzCjVYuw7+Vh0hwIraERljIt\n+x5+7l4xW5FejneVqI1UlS2oBI3Hw7irrL2MyjetPNC9L/TKgkcx1XcWpWz+ankW\nhAt2QbzcEcmZawFwkLG1P2DqlGI0XI0xbnDM3/8yMDscRCXE7IzZr/a/vqYmTIer\npJpplS3zYawSKNPTR+T4AkA//CLEWzpFmp2VtHSWMYgMz2Ur7CqoP9aW8KZ0PDpY\nYVE8khRtAgMBAAECggEAI42eo62htYFmhSqbhU/b+N2GBAM2Gx9tzEk/NDDqH9sX\nHgtfQk8Vp8p6f8wIxo6oJgKSWwyj0HSEcbX6xdYVdjWd6NPFpJ2QsN3qdf6f7sT/\n4vYO3ObI6yaupxq/b9Rw8GjVstQkXz3Y6xxT4KN7db8EIiSVYlLWlog94vc16thB\nCAPSuzhH5e9x2nD9NSinLpKQV836CkCgCVxyRYc9mYRe2WU8rrEsag+KntCV0Fij\noH+Cc2sUGSxtB7xXtC1WiHfS5Xm9kmUsXQJ8vJk9mRknr7KZwnwKFqzOsOLh3AEl\nyKwOEfqnoAUXB1p6SVobAk02CEJJWITSdyZFXlNf6QKBgQD/Cbat4ueMfI2X3hxb\na5QrPlUYyriYJK83265E3ox8EMsSGFl/b56R99rDj8fpRWOp0w5IJ3EV5e28Wwpk\n6iNCwHaiWFwggyETd5Mra/mfK1d9mfyoZxyu+Q25Xx9DMgqdqAKkFU3KAHL5fX8G\ngDvxKSqa7JPeaaaGmiFWx29OHwKBgQD2WWdmPsFrHe9ZZL5LD+2dWOT5jDMa2Aqv\nIxfnASbnk0yH/8x6E/yObB+fEh/GgwxpPkHhDsTVOsXOZzw/yfyArgD9wlh2iJ3e\n0NDxCaJmwdFRxRE4SEH0E1660e+e1URt+Nh0FK+I6kkSWY9sGoBhSO64CiGh1on5\nGKsswc1z8wKBgGe7a7IOOF/LyUub66zDdOCh2brbuXkocpwlnhwk6L8NlYsmnEBZ\nBgYY6cHhGU6oCoFodsaiRDzD6I5T+UZSdUURQy+FAPO4Yhuo5xMiN8Wlu1A68akN\nR31jj1F2fyC1mdvGGkzi3WDsDdesU54xSjAsrkeVMg+kqTbWOfkx5PPBAoGBAJ63\nm1bUt+k7sCn4LmJOMNlfnKbrHUH+T2PnSE8c/uPUk0pMFIHSvrVEFFt4YeCULjrg\nUbGewlJfO3JwMPEoQfbmJN1ZiYVVH+Gex/+EJY3u8d2tChso8tU+ZZoYCDpdTWlN\nGqgva6jayZl4+l679Fq5kpQgcurCPsKukhqUArrhAoGAJWv7enYFG/hk7Q1etrh1\n6G7xxHeKqYgwH6nA+TYZRtdBRG3HRI5XMTJRnp/Asm6PkkrtceJ58zXPayC+qgD2\nJaFNZYi5GtBTcQ88JxFpSyl5bfUCpavGu3u1LVzNynylmkeAPASFbI618D9sdtgT\neW2pFTqZ4eZ4QfrkqO3SAuM=\n-----END PRIVATE KEY-----\n",
+    "client_email": "famscribe@familytranscribe.iam.gserviceaccount.com",
+    "client_id": "118356866520117768380",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/famscribe%40familytranscribe.iam.gserviceaccount.com",
+    "universe_domain": "googleapis.com"
+  }
+  
