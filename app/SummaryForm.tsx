@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Textarea } from "@/components/ui/textarea"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Button } from "@/components/ui/button"
+import { Label } from "@/components/ui/label"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -51,15 +52,18 @@ export default function SummaryForm(){
 
   const handleSubmit = (evt: any) => {
     evt.preventDefault();
-    
+
   }
 
   return (
     <form onSubmit={handleSubmit} onChange={handleChange}>
       <Textarea name="text" onChange={handleChange}/>
-      <Checkbox name="translate" onChange={handleChange}/>
+      <Checkbox id="translate" name="translate" onChange={handleChange}/>
+      <Label htmlFor="translate">Translate?</Label>
       <DropdownMenu>
-          <DropdownMenuTrigger disabled={!form.translate}>Choose Language</DropdownMenuTrigger>
+          <DropdownMenuTrigger disabled={!form.translate}>
+            <Button variant="outline">Choose Language</Button>
+          </DropdownMenuTrigger>
           <DropdownMenuContent>
           <DropdownMenuLabel>Language</DropdownMenuLabel>
           <DropdownMenuSeparator />
@@ -80,7 +84,7 @@ export default function SummaryForm(){
           </DropdownMenuRadioGroup>
           </DropdownMenuContent>
       </DropdownMenu>
-      <Button variant="outline" onSubmit={handleSubmit}>Submit</Button>
+      <Button onSubmit={handleSubmit}>Submit</Button>
     </form>
   );
 }
