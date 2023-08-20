@@ -33,3 +33,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+#Google Translate API
+app/familytranscribe_google.json
