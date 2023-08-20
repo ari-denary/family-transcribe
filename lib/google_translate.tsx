@@ -1,26 +1,25 @@
-const fs = require('fs');
-// Import the Google Cloud Translate module
-const {Translate} = require('@google-cloud/translate').v2;
+// const fs = require('fs');
+// // Import the Google Cloud Translate module
+// const {Translate} = require('@google-cloud/translate').v2;
 
-const credentialsPath = 'app/familytranscribe_google.json';
-const CREDENTIALS = JSON.parse(fs.readFileSync(credentialsPath, 'utf8'));
+// const credentialsPath = 'app/familytranscribe_google.json';
+// const CREDENTIALS = JSON.parse(fs.readFileSync(credentialsPath, 'utf8'));
 
-const translate = new Translate({ credentials: CREDENTIALS });
+// const translate = new Translate({ credentials: CREDENTIALS });
 
 
 //For .env file
-// const {Translate} = require('@google-cloud/translate').v2;
-// require('dotenv').config();
+const {Translate} = require('@google-cloud/translate').v2;
+require('dotenv').config();
 
-// const apiKey = process.env.CREDENTIALS;
+const apiKey = process.env.CREDENTIALS;
 
+const CREDENTIALS = JSON.parse(process.env.CREDENTIALS || '{}');
 
-// const CREDENTIALS = JSON.parse(process.env.CREDENTIALS || '{}');
-
-// const translate = new Translate({
-//     credentials: CREDENTIALS,
-//     projectId:CREDENTIALS.project_id
-// });
+const translate = new Translate({
+    credentials: CREDENTIALS,
+    projectId:CREDENTIALS.project_id
+});
 //End of for .env file
 
 //Detect Language
