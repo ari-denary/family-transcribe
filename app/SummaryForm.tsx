@@ -27,16 +27,31 @@ export default function SummaryForm(){
     language: ""
   });
 
-  const handleChange = () => {
-
+  const handleChange = (evt: any) => {
+    const input = evt.target;
+    if (input.name === "text"){
+      setForm(formData => ({
+        ...formData,
+        [input.name]: input.value,
+      }));
+    } else {
+      setForm(formData => ({
+        ...formData,
+        [input.name]: !form.translate,
+      }));
+    }
   }
 
-  const updateLanguage = () => {
-
+  const updateLanguage = (value: string) => {
+    setForm(formData => ({
+      ...formData,
+      ["language"]: value,
+    }));
   }
 
-  const handleSubmit = () => {
-
+  const handleSubmit = (evt: any) => {
+    evt.preventDefault();
+    
   }
 
   return (
