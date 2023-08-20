@@ -84,7 +84,7 @@ export default function SummaryForm(){
           </DropdownMenuRadioGroup>
           </DropdownMenuContent>
       </DropdownMenu>
-      <Button onSubmit={handleSubmit}>Submit</Button>
+      <Button type='submit' onSubmit={handleSubmit}>Submit</Button>
     </form>
   );
 }
