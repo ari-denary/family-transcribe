@@ -35,6 +35,7 @@
     "package": "npm run build:extension && zip -r packages/$(date -u +\"%Y-%m-%dT%H:%M:%SZ\").zip out"
   },
   "dependencies": {
+    "@react-pdf/renderer": "^3.1.12",
     "@types/node": "20.5.0",
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
@@ -46,6 +47,7 @@
     "postcss": "8.4.28",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-pdf-html": "^1.1.18",
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6"
   }
