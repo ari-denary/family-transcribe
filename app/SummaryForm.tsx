@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { getSummary } from './api/helpers/openai';
+import { getHTML } from './api/helpers/openai';
 import { getTranslation } from './api/helpers/translate';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -60,6 +61,7 @@ export default function SummaryForm() {
       if (form.translate && form.language){
         summary = await getTranslation(summary, form.language)
       }
+      summary = await getHTML(summary);
       setSummary(summary);
 
     }catch(error:any){
