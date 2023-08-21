@@ -5,7 +5,10 @@ const {Translate} = require('@google-cloud/translate').v2;
 const credentialsPath = 'lib/familytranscribe_google.json';
 const CREDENTIALS = JSON.parse(fs.readFileSync(credentialsPath, 'utf8'));
 
-// const translate = new Translate({ credentials: CREDENTIALS });
+const translate = new Translate({
+    credentials: CREDENTIALS,
+    projectId:CREDENTIALS.project_id
+});
 
 
 //For .env file
@@ -17,11 +20,7 @@ const CREDENTIALS = JSON.parse(fs.readFileSync(credentialsPath, 'utf8'));
 // console.log(test, "test")
 
 // const CREDENTIALS = JSON.parse(process.env.CREDENTIALS || '{}');
-
-const translate = new Translate({
-    credentials: CREDENTIALS,
-    projectId:CREDENTIALS.project_id
-});
+//Can add the variable const translate
 //End of for .env file
 
 //Detect Language
