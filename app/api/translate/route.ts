@@ -1,16 +1,25 @@
-import { NextResponse } from 'next/server';
+const { NextResponse } = require('next/server');
+const fs = require('fs');
+// Import the Google Cloud Translate module
+const {Translate} = require('@google-cloud/translate').v2;
+
+const credentialsPath = 'lib/familytranscribe_google.json';
+const CREDENTIALS = JSON.parse(fs.readFileSync(credentialsPath, 'utf8'));
+
+const translate = new Translate({
+    credentials: CREDENTIALS,
+    projectId:CREDENTIALS.project_id
+});
 
 //For .env file
-const {Translate} = require('@google-cloud/translate').v2;
-// import { NextResponse } from 'next/server';
-require('dotenv').config();
+// const {Translate} = require('@google-cloud/translate').v2;
+// // import { NextResponse } from 'next/server';
+// require('dotenv').config();
 
-// const test = process.env.CREDENTIALS;
-// console.log(test, "test")
-const two = process.env.OPENAI_API_KEY;
-console.log(two, "two")
+// const two = process.env.OPENAI_API_KEY;
+// console.log(two, "two")
 
-const CREDENTIALS = JSON.parse(two || '{}');
+// const CREDENTIALS = JSON.parse(two || '{}');
 
 // const translate = new Translate({
 //     credentials: CREDENTIALS,
@@ -18,7 +27,7 @@ const CREDENTIALS = JSON.parse(two || '{}');
 // });
 //End of for .env file
 
-export async function POST(request: Request) {
+async function POST(request: Request) {
     const translate = new Translate({
         credentials: CREDENTIALS,
         projectId:CREDENTIALS.project_id
@@ -37,6 +46,10 @@ export async function POST(request: Request) {
         throw new Error('Translation failed') //res.status => 400 error Bad Request
       }
   }
+
+  module.exports = {
+    POST
+};
 
 // async function translateText() {
 //     const text = 'Hello, world!';
