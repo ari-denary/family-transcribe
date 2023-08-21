@@ -6,14 +6,14 @@ export async function POST(request: Request) {
     apiKey: process.env.OPENAI_API_KEY,
   });
 
-  const {text} = await request.json();
+  const { text } = await request.json();
 
   const completion = await openai.chat.completions.create({
     messages: [
       {
         role: 'system',
         content:
-          'You are an assistant that provides clear and simplified summaries of articles.',
+          'You are tasked with converting translated plain text content into structured HTML. This HTML content will eventually be converted into a PDF. Ensure that the structure is clear and simple, suitable for a static document format. Use appropriate HTML tags to segment and highlight important parts.',
       },
       {
         role: 'user',
@@ -25,6 +25,5 @@ export async function POST(request: Request) {
 
   return NextResponse.json({
     summary: completion.choices[0].message.content,
-  })
+  });
 }
-
