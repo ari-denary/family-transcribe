@@ -43,15 +43,10 @@ export async function POST(request: Request) {
     console.error('Translation error:', error);
     throw new Error('Translation failed'); //res.status => 400 error Bad Request
   }
-<<<<<<< HEAD
 
 
-/**
- * Detect Language
- */
-//Detect Language
-/* 
-Input:text 
+/** Detect Language
+Input:text
 Output: language
 Send in text and receive the language that it is written in
 */
@@ -71,6 +66,4 @@ module.exports = {
   POST,
   detectLanguage
 };
-=======
 }
->>>>>>> 8dd483350aeb58a723f8a17a83fa6912c729d687
