@@ -1,13 +1,13 @@
-const fs = require('fs');
+const fs1 = require('fs');
 // Import the Google Cloud Translate module
-const {Translate} = require('@google-cloud/translate').v2;
+const {Translate: GoogleTranslate} = require('@google-cloud/translate').v2;
 
-const credentialsPath = 'lib/familytranscribe_google.json';
-const CREDENTIALS = JSON.parse(fs.readFileSync(credentialsPath, 'utf8'));
+const credentialsPath1 = 'lib/familytranscribe_google.json';
+const CREDENTIALS1 = JSON.parse(fs1.readFileSync(credentialsPath1, 'utf8'));
 
-const translate = new Translate({
-    credentials: CREDENTIALS,
-    projectId:CREDENTIALS.project_id
+const translate1 = new GoogleTranslate({
+    credentials: CREDENTIALS1,
+    projectId:CREDENTIALS1.project_id
 });
 
 
@@ -33,7 +33,7 @@ async function detectLanguage() {
     const text = "Hello world"
 
     try {
-      const [detection] = await translate.detect(text);
+      const [detection] = await translate1.detect(text);
       console.log(`Detected language: ${detection.language}`);
       return detection.language;
     } catch (error) {
@@ -55,7 +55,7 @@ async function translateText() {
     const targetLanguage = 'la'; // Latin
   
     try {
-      const [translation] = await translate.translate(text, targetLanguage);
+      const [translation] = await translate1.translate(text, targetLanguage);
     //   console.log(`Original: ${text}`);
       console.log(`Translation: ${translation}`);
       return translation;
