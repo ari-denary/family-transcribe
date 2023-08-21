@@ -32,8 +32,9 @@ export default function SummaryForm() {
     language: '',
   });
   const [summary, setSummary] = useState<string>('');
+  const [html, setHTML] = useState<string>('');
 
-  const { MyPDFViewer, MyPDFDownloadLink } = useReactPDF(summary);
+  const { MyPDFViewer, MyPDFDownloadLink } = useReactPDF(html);
 
   const handleChange = (evt: any) => {
     const input = evt.target;
@@ -64,8 +65,9 @@ export default function SummaryForm() {
       if (form.translate && form.language) {
         summary = await getTranslation(summary, form.language);
       }
-      summary = await getHTML(summary);
       setSummary(summary);
+      const htmlSummary = await getHTML(summary);
+      setHTML(htmlSummary);
     } catch (error: any) {
       console.error(error.message);
     }
@@ -103,16 +105,14 @@ export default function SummaryForm() {
             <DropdownMenuRadioItem value='japanese'>
               Japenese
             </DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value='korean'>Korean</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value='ko'>Korean</DropdownMenuRadioItem>
             <DropdownMenuRadioItem value='portuguese'>
               Portuguese
             </DropdownMenuRadioItem>
             <DropdownMenuRadioItem value='russian'>
               Russian
             </DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value='spanish'>
-              Spanish
-            </DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value='es'>Spanish</DropdownMenuRadioItem>
             <DropdownMenuRadioItem value='turkish'>
               Turkish
             </DropdownMenuRadioItem>
@@ -122,9 +122,10 @@ export default function SummaryForm() {
       <Button type='submit' onSubmit={handleSubmit}>
         Submit
       </Button>
-      {/* {summary && <p>{summary}</p>} */}
-      {summary.length ? (
+      {summary && <p>{summary}</p>}
+      {html ? (
         <>
+          <p>PDF: (still in development for non-Latin languages)</p>
           <MyPDFDownloadLink />
           <MyPDFViewer />
         </>
