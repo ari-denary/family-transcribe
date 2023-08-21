@@ -12,8 +12,8 @@ const translate = new Translate({
 });
 
 /**
- * 
- * @param request 
+ *
+ * @param request
  * @returns JSON of translated data
  */
 
@@ -22,9 +22,9 @@ async function POST(request: Request) {
         credentials: CREDENTIALS,
         projectId:CREDENTIALS.project_id
     });
-  
+
     const {text, language} = await request.json();
-  
+
     try {
         const [translation] = await translate.translate(text, language);
         console.log(`Translation: ${translation}`);

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { getSummary } from './api/helpers/openai';
 import { getHTML } from './api/helpers/openai';
 import { getTranslation } from './api/helpers/translate';
+import { useReactPDF } from './_hooks/useReactPDF';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Button } from '@/components/ui/button';
@@ -32,6 +33,8 @@ export default function SummaryForm() {
   });
   const [summary, setSummary] = useState<string>('');
 
+  const { MyPDFViewer, MyPDFDownloadLink } = useReactPDF(summary);
+
   const handleChange = (evt: any) => {
     const input = evt.target;
     if (input.name === 'text') {
@@ -56,18 +59,16 @@ export default function SummaryForm() {
 
   const handleSubmit = async (evt: any) => {
     evt.preventDefault();
-    try{
+    try {
       let summary = await getSummary(form.text);
-      if (form.translate && form.language){
-        summary = await getTranslation(summary, form.language)
+      if (form.translate && form.language) {
+        summary = await getTranslation(summary, form.language);
       }
       summary = await getHTML(summary);
       setSummary(summary);
-
-    }catch(error:any){
-      console.error(error.message)
+    } catch (error: any) {
+      console.error(error.message);
     }
-
   };
 
   return (
@@ -121,9 +122,13 @@ export default function SummaryForm() {
       <Button type='submit' onSubmit={handleSubmit}>
         Submit
       </Button>
-      {summary && <p>{summary}</p>}
+      {/* {summary && <p>{summary}</p>} */}
+      {summary.length ? (
+        <>
+          <MyPDFDownloadLink />
+          <MyPDFViewer />
+        </>
+      ) : null}
     </form>
   );
 }
-
-
