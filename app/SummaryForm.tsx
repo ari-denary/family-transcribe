@@ -2,7 +2,9 @@
 
 import { useState } from 'react';
 import { getSummary } from './api/helpers/openai';
+import { getHTML } from './api/helpers/openai';
 import { getTranslation } from './api/helpers/translate';
+import { useReactPDF } from './_hooks/useReactPDF';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Button } from '@/components/ui/button';
@@ -30,6 +32,9 @@ export default function SummaryForm() {
     language: '',
   });
   const [summary, setSummary] = useState<string>('');
+  const [html, setHTML] = useState<string>('');
+
+  const { MyPDFViewer, MyPDFDownloadLink } = useReactPDF(html);
 
   const handleChange = (evt: any) => {
     const input = evt.target;
@@ -55,17 +60,17 @@ export default function SummaryForm() {
 
   const handleSubmit = async (evt: any) => {
     evt.preventDefault();
-    try{
+    try {
       let summary = await getSummary(form.text);
-      if (form.translate && form.language){
-        summary = await getTranslation(summary, form.language)
+      if (form.translate && form.language) {
+        summary = await getTranslation(summary, form.language);
       }
       setSummary(summary);
-
-    }catch(error:any){
-      console.error(error.message)
+      const htmlSummary = await getHTML(summary);
+      setHTML(htmlSummary);
+    } catch (error: any) {
+      console.error(error.message);
     }
-
   };
 
   return (
@@ -100,16 +105,14 @@ export default function SummaryForm() {
             <DropdownMenuRadioItem value='japanese'>
               Japenese
             </DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value='korean'>Korean</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value='ko'>Korean</DropdownMenuRadioItem>
             <DropdownMenuRadioItem value='portuguese'>
               Portuguese
             </DropdownMenuRadioItem>
             <DropdownMenuRadioItem value='russian'>
               Russian
             </DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value='spanish'>
-              Spanish
-            </DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value='es'>Spanish</DropdownMenuRadioItem>
             <DropdownMenuRadioItem value='turkish'>
               Turkish
             </DropdownMenuRadioItem>
@@ -120,8 +123,13 @@ export default function SummaryForm() {
         Submit
       </Button>
       {summary && <p>{summary}</p>}
+      {html ? (
+        <>
+          <p>PDF: (still in development for non-Latin languages)</p>
+          <MyPDFDownloadLink />
+          <MyPDFViewer />
+        </>
+      ) : null}
     </form>
   );
 }
-
-
