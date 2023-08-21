@@ -74,62 +74,85 @@ export default function SummaryForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} onChange={handleChange}>
-      <Textarea name='text' onChange={handleChange} />
-      <Checkbox id='translate' name='translate' onChange={handleChange} />
-      <Label htmlFor='translate'>Translate?</Label>
-      <DropdownMenu>
-        <DropdownMenuTrigger disabled={!form.translate}>
-          <Button variant='outline'>Choose Language</Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuLabel>Language</DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuRadioGroup
-            value={form.language}
-            onValueChange={updateLanguage}
-          >
-            <DropdownMenuRadioItem value='arabic'>Arabic</DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value='chinese-simplified'>
-              Chinese-Simplified
-            </DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value='chinese-traditional'>
-              Chinese-Traditional
-            </DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value='dutch'>Dutch</DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value='french'>French</DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value='german'>German</DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value='italian'>
-              Italian
-            </DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value='japanese'>
-              Japenese
-            </DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value='ko'>Korean</DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value='portuguese'>
-              Portuguese
-            </DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value='russian'>
-              Russian
-            </DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value='es'>Spanish</DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value='turkish'>
-              Turkish
-            </DropdownMenuRadioItem>
-          </DropdownMenuRadioGroup>
-        </DropdownMenuContent>
-      </DropdownMenu>
-      <Button type='submit' onSubmit={handleSubmit}>
-        Submit
-      </Button>
-      {summary && <p>{summary}</p>}
-      {html ? (
-        <>
-          <p>PDF: (still in development for non-Latin languages)</p>
-          <MyPDFDownloadLink />
-          <MyPDFViewer />
-        </>
-      ) : null}
-    </form>
+    <div className="bg-gray-100 p-4 mx-4 my-8 rounded-lg" >
+      <form onSubmit={handleSubmit} onChange={handleChange}>
+        <div className="bg-black border border-black rounded-lg p-6 text-white text-center m-4">
+          <h1 className="text-3xl font-semibold mb-2">Welcome to Family Transcribe</h1>
+          <p className="mt-2">Facilitating meaningful conversations between generations</p>
+        </div>
+        <Textarea name='text' onChange={handleChange} className="h-40 w-full p-2 border rounded-md focus:ring focus:ring-blue-300 mb-4" 
+                  placeholder="Paste your text here..." />
+        <div className="flex flex-col items-center"> {/* Wrap the components */}
+          <div className="mb-4">
+            <Checkbox id='translate' name='translate' onChange={handleChange} />
+            <Label htmlFor='translate' className=" ml-2">Translate?</Label>
+          </div>
+          <DropdownMenu>
+            <DropdownMenuTrigger disabled={!form.translate}>
+              <Button variant='outline'>Choose Language</Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuLabel>Language</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuRadioGroup
+                value={form.language}
+                onValueChange={updateLanguage}
+              >
+                <DropdownMenuRadioItem value='arabic'>Arabic</DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value='chinese-simplified'>
+                  Chinese-Simplified
+                </DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value='chinese-traditional'>
+                  Chinese-Traditional
+                </DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value='dutch'>Dutch</DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value='french'>French</DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value='german'>German</DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value='italian'>
+                  Italian
+                </DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value='japanese'>
+                  Japenese
+                </DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value='ko'>Korean</DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value='portuguese'>
+                  Portuguese
+                </DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value='russian'>
+                  Russian
+                </DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value='es'>Spanish</DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value='turkish'>
+                  Turkish
+                </DropdownMenuRadioItem>
+              </DropdownMenuRadioGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+        <div className="flex justify-center mt-4"> {/* Flex container */}
+          <Button type='submit' onSubmit={handleSubmit} className="bg-black hover:bg-gray-800 text-white py-2 px-4 rounded-md cursor-pointer">
+            Submit
+          </Button>
+        </div>
+        <div className="mx-auto mt-4">
+          {summary && <p>{summary}</p>}
+        </div>
+        {html ? (
+          <div className="text-center">
+            <br></br>
+            <p>PDF: (still in development for non-Latin languages)</p>
+            <div className="mx-auto mt-4 relative" style={{ width: '50%' }}> {/* Center and position */}
+              <MyPDFViewer />
+            </div>
+            <br></br>
+            <div className="flex justify-center mt-4">
+              <div className="inline-block rounded-md shadow">
+                <MyPDFDownloadLink className="bg-gray-800 hover:bg-gray-700 text-white py-2 px-4 cursor-pointer rounded-md shadow-md"/>
+              </div>
+            </div>
+          </div>
+        ) : null}
+      </form>
+    </div>
   );
 }
