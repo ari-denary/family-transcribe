@@ -29,7 +29,7 @@ Input:text
 Output: language
 Send in text and receive the language that it is written in
 */
-async function detectLanguage() {
+async function detectLanguage1() {
     const text = "Hello world"
 
     try {
@@ -42,7 +42,7 @@ async function detectLanguage() {
     }
   }
   
-  detectLanguage();
+  detectLanguage1();
 
 // Translate text
 /* 

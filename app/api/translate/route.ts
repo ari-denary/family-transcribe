@@ -37,6 +37,29 @@ async function POST(request: Request) {
       }
   }
 
-  module.exports = {
-    POST
+
+/**
+ * Detect Language
+ */
+//Detect Language
+/* 
+Input:text 
+Output: language
+Send in text and receive the language that it is written in
+*/
+async function detectLanguage(request: Request) {
+  const {text} = await request.json();
+
+  try {
+    const [detection] = await translate.detect(text);
+    console.log(`Detected language: ${detection.language}`);
+    return detection.language;
+  } catch (error) {
+    return error;
+  }
+}
+
+module.exports = {
+  POST,
+  detectLanguage
 };
