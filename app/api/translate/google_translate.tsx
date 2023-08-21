@@ -10,9 +10,13 @@
 
 //For .env file
 const {Translate} = require('@google-cloud/translate').v2;
+// import { NextResponse } from 'next/server';
 require('dotenv').config();
 
-const apiKey = process.env.CREDENTIALS;
+// const test = process.env.CREDENTIALS;
+// console.log(test, "test")
+const test = process.env.CREDENTIALS;
+console.log(test, "test")
 
 const CREDENTIALS = JSON.parse(process.env.CREDENTIALS || '{}');
 
@@ -28,20 +32,20 @@ Input:text
 Output: language
 Send in text and receive the language that it is written in
 */
-async function detectLanguage() {
-    const text = "Hello world"
+// async function detectLanguage() {
+//     const text = "Hello world"
 
-    try {
-      const [detection] = await translate.detect(text);
-    //   console.log(`Detected language: ${detection.language}`);
-      return detection.language;
-    } catch (error) {
-    //   console.error('Language detection error:', error);
-      return error;
-    }
-  }
+//     try {
+//       const [detection] = await translate.detect(text);
+//     //   console.log(`Detected language: ${detection.language}`);
+//       return detection.language;
+//     } catch (error) {
+//     //   console.error('Language detection error:', error);
+//       return error;
+//     }
+//   }
   
-  detectLanguage();
+//   detectLanguage();
 
 // Translate text
 /* 
